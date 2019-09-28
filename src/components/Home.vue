@@ -328,10 +328,7 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    @import '../assets/css/app.css';
-
     table {
         font-family: 'Open Sans', sans-serif;
         border-collapse: collapse;
@@ -365,7 +362,7 @@
     }
 
     tbody img {
-        max-width: 4rem
+        max-width: 2rem
     }
 
     .group {
@@ -384,8 +381,7 @@
 
     .footer {
         text-align: center;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding: 3rem 0;
         font-weight: 500;
         font-family: "Arial Rounded MT Bold"
     }
@@ -405,8 +401,7 @@
     }
 
     .button {
-        margin: 0 auto;
-        margin-top: 2rem;
+        margin: 2rem auto;
         background-color: #44475c;
         font-weight: 700;
         color: #fff;
