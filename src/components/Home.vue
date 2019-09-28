@@ -91,8 +91,8 @@
                         </tr>
                         <tr>
                             <td>Sum</td>
-                            <td id="unit-sum">0</td>
-                            <td id="generals-sum">{{generalSum}}</td>
+                            <td id="unit-sum">{{unitSum}}</td>
+                            <td id="generals-sum">{{Math.round(generalSum * 100) / 100}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -173,8 +173,8 @@
                         </tr>
                         <tr>
                             <td>Sum</td>
-                            <td id="funit-sum">0</td>
-                            <td id="generals-sum">{{generalSumFleet}}</td>
+                            <td id="funit-sum">{{unitSumFleet}}</td>
+                            <td id="generals-sum">{{Math.round(generalSumFleet * 100) / 100}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -268,7 +268,12 @@
                 let inputValue = event.target.value;
                 let generals = inputValue * generalsValue;
                 this.init[event.target.id] = Math.round(generals * 100) / 100;
-                this.generalSum = this.generalSumCalc()
+                this.generalSum = Math.round(this.generalSumCalc() * 100) / 100;
+
+                let sum = 0;
+                let inputs = [...document.querySelectorAll("[class^='units']")];
+                inputs.forEach(i => sum += +i.value);
+                this.unitSum = sum;
             },
             generalSumCalc() {
                 let total = 0;
@@ -282,7 +287,12 @@
                 let inputValue = event.target.value;
                 let generals = inputValue * generalsValue;
                 this.initFleet[event.target.id] = Math.round(generals * 100) / 100;
-                this.generalSumFleet = this.generalSumCalcFleet()
+                this.generalSumFleet = Math.round(this.generalSumCalcFleet() * 100) / 100;
+
+                let sum = 0;
+                let inputs = [...document.querySelectorAll("[class^='funits']")];
+                inputs.forEach(i => sum += +i.value);
+                this.unitSumFleet = sum;
             },
             generalSumCalcFleet() {
                 let total = 0;
@@ -296,13 +306,23 @@
                 for (let property in this.init) {
                     this.init[property] = 0
                 }
-                this.generalSum = 0
+
+                let inputs = [...document.querySelectorAll("[class^='units']")];
+                inputs.forEach(i => i.value = "");
+
+                this.generalSum = 0;
+                this.unitSum = 0;
             },
             resetFleet() {
                 for (let property in this.initFleet) {
                     this.initFleet[property] = 0
                 }
+
+                let inputs = [...document.querySelectorAll("[class^='funits']")];
+                inputs.forEach(i => i.value = "");
+
                 this.generalSumFleet = 0
+                this.unitSumFleet = 0;
             },
         }
     }
