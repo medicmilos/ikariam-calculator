@@ -1,4 +1,4 @@
-# ikariam-calculator
+# ikariam-calculator-app
 
 ## Project setup
 ```
